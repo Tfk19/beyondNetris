@@ -25,7 +25,7 @@ const Register = ({ navigation }) => {
             fontSize: 35,
           }}
         >
-          Sign Up
+          Sign Upp
         </Text>
         <Text
           style={{
