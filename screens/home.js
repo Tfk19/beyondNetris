@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // paddingHorizontal: 20,
     // paddingVertical: 20,
-    backgroundColor: "white",
+    backgroundColor: "#F7B40B",
   },
   containerMainMenu: {
     width: "100%",
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   containerMainBox: {
     width: "100%",
     height: 300,
-    backgroundColor: "#DCCDE5",
+    backgroundColor: "#ffffff",
     borderRadius: 15,
     paddingHorizontal: 20,
     paddingVertical: 20,
@@ -184,7 +184,7 @@ const Home = ({ navigation }) => {
             width: "100%",
             height: 80,
             borderRadius: 10,
-            backgroundColor: "#DCCDE5",
+            backgroundColor: "#ffffff",
           }}
         >
           <View
@@ -208,11 +208,11 @@ const Home = ({ navigation }) => {
                   uri: item.img,
                 }}
               ></Image>
-              <View style={{ paddingHorizontal: 10, maxWidth: "80%" }}>
+              <View style={{ paddingHorizontal: 10, maxWidth: "80%",  }}>
                 <Text
                   style={{
                     fontFamily: "Inter_700Bold",
-                    color: "#5A1781",
+                    color: "#F7B40B",
                     fontSize: 13,
                   }}
                 >
@@ -234,7 +234,7 @@ const Home = ({ navigation }) => {
             >
               <View
                 style={{
-                  backgroundColor: "#774494",
+                  backgroundColor: "#F7B40B",
                   width: "80%",
                   height: "50%",
                   alignItems: "center",
@@ -256,7 +256,7 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.containerProfile}>
         <View style={{ flexDirection: "row" }}>
-          <Profile name={"Rizki"} />
+          <Profile name={"Taufik"} />
         </View>
         {/* <Carousel
           ref={carouselRef}
@@ -281,7 +281,7 @@ const Home = ({ navigation }) => {
                   latitudeDelta: 0.1,
                   longitudeDelta: 0.1,
                 }}
-                style={{ width: "100%", height: "100%", borderRadius: 10 }}
+                style={{ width: "100%", height: "100%", borderRadius: 10, backgroundColor:"white" }}
               ></MapView>
             </View>
             <View
@@ -289,6 +289,7 @@ const Home = ({ navigation }) => {
                 flex: 1,
                 width: "100%",
                 alignItems: "center",
+                backgroundColor:"white",
               }}
             >
               <Button

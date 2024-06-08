@@ -92,7 +92,7 @@ const TabList = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#774494",
+        activeTintColor: "#000000",
         inactiveTintColor: "#C7C7C7",
       }}
     >
@@ -129,7 +129,7 @@ const CustomTabIcon = ({ name, focused, size, color }) => {
           style={{
             width: "100%",
             height: 7,
-            backgroundColor: "#774494",
+            backgroundColor: "#000000",
             borderBottomLeftRadius: 5,
             borderBottomRightRadius: 5,
           }}

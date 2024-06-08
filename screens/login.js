@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 20,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#F7B40B",
   },
 });
 
@@ -21,7 +21,7 @@ const Login = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "Inter_600SemiBold",
-            color: "#774494",
+            color: "#ffffff",
             fontSize: 35,
           }}
         >
@@ -30,7 +30,7 @@ const Login = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "Inter_400Regular",
-            color: "#774494",
+            color: "#000000",
             fontSize: 15,
           }}
         >
@@ -56,7 +56,7 @@ const Login = ({ navigation }) => {
           style={{
             fontFamily: "Inter_400Regular",
             fontSize: 14,
-            color: "#774494",
+            color: "#000000",
           }}
         >
           Or
