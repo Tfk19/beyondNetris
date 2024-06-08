@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 20,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#F7B40B",
   },
 });
 
@@ -21,7 +21,7 @@ const Register = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "Inter_600SemiBold",
-            color: "#774494",
+            color: "#ffffff",
             fontSize: 35,
           }}
         >
@@ -30,7 +30,7 @@ const Register = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "Inter_400Regular",
-            color: "#774494",
+            color: "#ffffff",
             fontSize: 15,
           }}
         >
@@ -64,7 +64,7 @@ const Register = ({ navigation }) => {
           <Text
             style={{
               fontFamily: "Inter_400Regular",
-              color: "#774494",
+              color: "#ffffff",
               fontSize: 16,
             }}
           >
@@ -74,7 +74,7 @@ const Register = ({ navigation }) => {
           <Text
             style={{
               fontFamily: "Inter_600SemiBold",
-              color: "#774494",
+              color: "#ffffff",
               fontSize: 16,
             }}
           >

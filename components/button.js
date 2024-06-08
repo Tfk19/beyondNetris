@@ -9,7 +9,7 @@ const Button = (props) => {
         <TouchableOpacity
           onPress={props.op}
           style={{
-            backgroundColor: "#774494",
+            backgroundColor: "#000000",
             width: "95%",
             height: 50,
             justifyContent: "center",
@@ -46,7 +46,7 @@ const Button = (props) => {
         <TouchableOpacity
           onPress={props.op}
           style={{
-            backgroundColor: props.bgs === true ? "#DCCDE5" : "#774494",
+            backgroundColor: props.bgs === true ? "#DCCDE5" : "#000000",
             width: props.full === true ? "100%" : "95%",
             height: 50,
             justifyContent: "center",
@@ -57,7 +57,7 @@ const Button = (props) => {
         >
           <Text
             style={{
-              color: props.bgs === true ? "#774494" : "white",
+              color: props.bgs === true ? "#000000" : "white",
               fontFamily: "Inter_600SemiBold",
               fontSize: 17,
             }}
