@@ -49,9 +49,9 @@ const Nerby = ({ navigation }) => {
   const listTambalBan = [
     {
       id: 0,
-      nama: "Tambal ban cak imin",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
+      nama: "MICHELIN",
+      tipe: "MICHELIN AUTHORIZED DEALER",
+      alamat: "JL. Raya Gembrung No.20",
     },
     {
       id: 1,
@@ -116,7 +116,7 @@ const Nerby = ({ navigation }) => {
               borderTopLeftRadius: 10,
               borderTopRightRadius: 10,
             }}
-            source={require("../assets/tambalBan.jpg")}
+            source={require("../assets/michelin.jpg")}
           />
         </View>
         <View style={{ flex: 1.3, paddingLeft: 10, justifyContent: "center" }}>
