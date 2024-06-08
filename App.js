@@ -92,7 +92,7 @@ const TabList = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#000000",
+        activeTintColor: "#F7B40B",
         inactiveTintColor: "#C7C7C7",
       }}
     >
