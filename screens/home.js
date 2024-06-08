@@ -256,7 +256,7 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.containerProfile}>
         <View style={{ flexDirection: "row" }}>
-          <Profile name={"Hanif"} />
+          <Profile name={"klompok devop"} />
         </View>
         {/* <Carousel
           ref={carouselRef}
