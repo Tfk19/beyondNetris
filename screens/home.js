@@ -101,22 +101,20 @@ const Home = ({ navigation }) => {
   const [userName, setUserName] = useState("");
   const [dataBerita, setDataBerita] = useState([]);
 
-
   const goForward = () => {
     carouselRef.current.snapToNext();
   };
 
-  const fetchData = () => {
-    fetch('https://api-berita-indonesia.vercel.app/antara/otomotif/')
-      .then((response) => response.json())
-      .then((data) => {
-        setDatas(data.posts);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api-berita-indonesia.vercel.app/antara/otomotif/');
+        const data = await response.json();
+        setDataBerita(data.data.posts);
+      } catch (error) {
+        console.error("Error fetching news data:", error);
+      }
+    };
     fetchData();
   }, []);
 
@@ -163,8 +161,6 @@ const Home = ({ navigation }) => {
     return unsubscribe;
   }, []);
 
-
-
   const renderItem = ({ item }, parallaxProps) => {
     return (
       <View style={styles.item}>
@@ -210,7 +206,7 @@ const Home = ({ navigation }) => {
             >
               <Image
                 style={{ width: 50, height: 50, borderRadius: 10 }}
-                source={{ uri: item.img }}
+                source={{ uri: item.thumbnail }}
               />
               <View style={{ paddingHorizontal: 10, maxWidth: "80%" }}>
                 <Text
@@ -220,7 +216,7 @@ const Home = ({ navigation }) => {
                     fontSize: 13,
                   }}
                 >
-                  {item.judul}
+                  {item.title}
                 </Text>
               </View>
             </View>
@@ -232,18 +228,20 @@ const Home = ({ navigation }) => {
                 paddingHorizontal: 10,
               }}
             >
-              <View
-                style={{
-                  backgroundColor: "#F7B40B",
-                  width: "80%",
-                  height: "50%",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 10,
-                }}
-              >
-                <Text style={{ color: "white" }}>lebih</Text>
-              </View>
+              <TouchableOpacity onPress={() => navigation.navigate("beritadetail", { newsItem })}>
+                <View
+                  style={{
+                    backgroundColor: "#F7B40B",
+                    width: "80%",
+                    height: "50%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: 10,
+                  }}
+                >
+                  <Text style={{ color: "white" }}>Lebih</Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -314,10 +312,10 @@ const Home = ({ navigation }) => {
           </View>
           <Separator h={10} />
           <FlatList
-             data={dataBerita.posts} // Menggunakan data dari array "posts"
-             renderItem={renderBerita}
-             keyExtractor={(item, index) => item.link} // Menggunakan properti 'link' sebagai kunci unik
-             showsVerticalScrollIndicator={false}
+            data={dataBerita} // Menggunakan data dari state dataBerita
+            renderItem={renderBerita}
+            keyExtractor={(item, index) => item.link} // Menggunakan properti 'link' sebagai kunci unik
+            showsVerticalScrollIndicator={false}
           />
         </View>
       </View>
