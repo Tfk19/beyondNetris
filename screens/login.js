@@ -1,7 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
-import { TextInput } from "react-native-paper";
-import { Separator, Button, AuthTextInput, PwdInput } from "../components";
-import React from "react";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import { AuthTextInput, PwdInput, Separator, Button } from "../components";
+import { loginUser } from "../Action/AuthAction";
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +13,18 @@ const styles = StyleSheet.create({
 });
 
 const Login = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const userData = await loginUser(email, password);
+      navigation.navigate("HomeTab");
+    } catch (error) {
+      Alert.alert("Login Error", error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View
@@ -40,16 +52,25 @@ const Login = ({ navigation }) => {
       <View
         style={{ flex: 1.5, alignItems: "center", justifyContent: "center" }}
       >
-        <AuthTextInput label={"Email"} ph={"Enter your email"} />
+        <AuthTextInput
+          label={"Email"}
+          ph={"Enter your email"}
+          value={email}
+          onChangeText={setEmail}
+        />
         <Separator h={20} />
-        <PwdInput label={"Password"} />
+        <PwdInput
+          label={"Password"}
+          value={password}
+          onChangeText={setPassword}
+        />
         <Separator h={20} />
       </View>
       <View style={{ flex: 3, justifyContent: "center", alignItems: "center" }}>
         <Button
           left={false}
           text={"Login"}
-          op={() => navigation.navigate("HomeTab")}
+          op={handleLogin}
         />
         <Separator h={15} />
         <Text
@@ -69,6 +90,36 @@ const Login = ({ navigation }) => {
           text={"Continue with Facebook"}
           iconName={"facebook-square"}
         />
+        <Separator h={20} />
+        {/* Tambahkan tombol menuju halaman pendaftaran di sini */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Register")}
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: "Inter_400Regular",
+              color: "#ffffff",
+              fontSize: 16,
+            }}
+          >
+            Don't have an account? 
+          </Text>
+          <Separator w={4} />
+          <Text
+            style={{
+              fontFamily: "Inter_600SemiBold",
+              color: "#ffffff",
+              fontSize: 16,
+            }}
+          >
+            Register
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
