@@ -1,25 +1,20 @@
+import React, { useRef, useState, useEffect } from "react";
 import {
   View,
+  TouchableOpacity,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  Dimensions,
-  Platform,
   Image,
   FlatList,
+  Dimensions,
+  Platform,
 } from "react-native";
-import { TextInput } from "react-native-paper";
-import {
-  Separator,
-  Button,
-  AuthTextInput,
-  PwdInput,
-  Profile,
-} from "../components";
-import React, { useRef, useState, useEffect } from "react";
+import { Button, Separator, Profile } from "../components";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
-import MapView, { Marker } from "react-native-maps";
+import MapView from "react-native-maps";
 import * as Location from "expo-location";
+import firebase from "../config/FIREBASE/index"
+
 
 const ENTRIES1 = [
   {
@@ -54,16 +49,34 @@ const { width: screenWidth } = Dimensions.get("window");
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingHorizontal: 20,
-    // paddingVertical: 20,
-    backgroundColor: "#F7B40B",
+    marginTop: 30,
+    backgroundColor: "#ffffff",
   },
-  containerMainMenu: {
+  containerProfile: {
+    flex: 1,
+    paddingHorizontal: 20,
+    justifyContent: "center",
+  },
+  containerBody: {
+    flex: 6,
+    borderRadius: 15,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  containerMainBox: {
     width: "100%",
-    height: "100%",
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 25,
-    backgroundColor: "white",
+    height: 300,
+    backgroundColor: "#F7B40B",
+    borderRadius: 15,
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    alignItems: "center",
+
+  },
+  containerMapView: {
+    flex: 4,
+    width: "100%",
+    paddingBottom: 20,
   },
   item: {
     width: 300,
@@ -71,7 +84,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 1,
-    marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
+    marginBottom: Platform.select({ ios: 0, android: 1 }),
     backgroundColor: "white",
     borderRadius: 8,
   },
@@ -79,42 +92,33 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     resizeMode: "cover",
   },
-  containerProfile: {
-    flex: 1,
-    paddingHorizontal: 20,
-    // paddingVertical: 10,
-    justifyContent: "center",
-  },
-  containerBody: {
-    flex: 6,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-  },
-  containerMainBox: {
-    width: "100%",
-    height: 300,
-    backgroundColor: "#ffffff",
-    borderRadius: 15,
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    alignItems: "center",
-    // justifyContent: "center",
-  },
-  containerMapView: {
-    flex: 4,
-    width: "100%",
-    paddingBottom: 20,
-  },
 });
 
 const Home = ({ navigation }) => {
   const [entries, setEntries] = useState([]);
-  const carouselRef = useRef(null);
   const [currentLocation, setCurrentLocation] = useState(null);
+  const carouselRef = useRef(null);
+  const [userName, setUserName] = useState("");
+  const [dataBerita, setDataBerita] = useState([]);
+
 
   const goForward = () => {
     carouselRef.current.snapToNext();
   };
+
+  const fetchData = () => {
+    fetch('https://api-berita-indonesia.vercel.app/antara/otomotif/')
+      .then((response) => response.json())
+      .then((data) => {
+        setDatas(data.posts);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -124,42 +128,44 @@ const Home = ({ navigation }) => {
           setError("Permission to access location was denied");
           return;
         }
-
         const location = await Location.getCurrentPositionAsync({});
         setCurrentLocation(location.coords);
       } catch (error) {
-        setError("Error getting user location: " + error);
+        console.error("Error getting user location:", error);
       }
     };
     fetchCurrentLocation();
-  });
+  }, []);
 
   useEffect(() => {
     setEntries(ENTRIES1);
   }, []);
 
-  const dataBerita = [
-    {
-      id: 0,
-      judul: "Pentingnya performa ban untuk berkendara",
-      subJudul: "Performa buruk berbahaya",
-      img: "https://i.ibb.co/mS5z6YM/ban.jpg",
-    },
-    {
-      id: 1,
-      judul: "Kriteria ban yang baik untuk kendaraanmu",
-      subJudul: "beberapa kriteria ban yang baik",
-      img: "https://s3.ap-southeast-1.amazonaws.com/moladin.assets/blog/wp-content/uploads/2019/10/20210943/pjimage-2020-07-20T210935.586.jpg",
-    },
-    {
-      id: 2,
-      judul: "Ban bocor berpotensi sobek?",
-      subJudul: "Bahaya ban bocor",
-      img: "https://www.wahanahonda.com/assets/upload/berita/BERITA_1612703202_f313da56f339b5fb48dda003e147fb92.jpg",
-    },
-  ];
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase.database()
+          .ref("users/" + user.uid)
+          .once("value")
+          .then((snapshot) => {
+            const userData = snapshot.val();
+            if (userData) {
+              setUserName(userData.fullName); // Assuming the name field is fullName, adjust accordingly
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching user data:", error);
+          });
+      } else {
+        setUserName("");
+      }
+    });
+    return unsubscribe;
+  }, []);
 
-  const renderItem = ({ item, index }, parallaxProps) => {
+
+
+  const renderItem = ({ item }, parallaxProps) => {
     return (
       <View style={styles.item}>
         <ParallaxImage
@@ -169,14 +175,14 @@ const Home = ({ navigation }) => {
           parallaxFactor={0.4}
           {...parallaxProps}
         />
-        {/* <Text style={styles.title} numberOfLines={2}>
-          {item.title}
-        </Text> */}
       </View>
     );
   };
 
   const renderBerita = ({ item }) => {
+    const newsItem = {
+      id: item.id,
+    };
     return (
       <>
         <View
@@ -203,12 +209,10 @@ const Home = ({ navigation }) => {
               }}
             >
               <Image
-                style={{ width: 50, height: 50, borderRadius:10 }}
-                source={{
-                  uri: item.img,
-                }}
-              ></Image>
-              <View style={{ paddingHorizontal: 10, maxWidth: "80%",  }}>
+                style={{ width: 50, height: 50, borderRadius: 10 }}
+                source={{ uri: item.img }}
+              />
+              <View style={{ paddingHorizontal: 10, maxWidth: "80%" }}>
                 <Text
                   style={{
                     fontFamily: "Inter_700Bold",
@@ -218,9 +222,6 @@ const Home = ({ navigation }) => {
                 >
                   {item.judul}
                 </Text>
-                {/* <Text style={{ fontFamily: "Inter_400Regular", fontSize: 12 }}>
-                  {item.img}
-                </Text> */}
               </View>
             </View>
             <View
@@ -229,7 +230,6 @@ const Home = ({ navigation }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 paddingHorizontal: 10,
-                // backgroundColor: "blue",
               }}
             >
               <View
@@ -256,17 +256,8 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.containerProfile}>
         <View style={{ flexDirection: "row" }}>
-          <Profile name={"klompok devop"} />
+          <Profile name={userName} />
         </View>
-        {/* <Carousel
-          ref={carouselRef}
-          sliderWidth={screenWidth}
-          sliderHeight={100}
-          itemWidth={screenWidth - 60}
-          data={entries}
-          renderItem={renderItem}
-          hasParallaxImages={true}
-        /> */}
       </View>
       <View style={styles.containerBody}>
         <View style={{ flex: 1 }}>
@@ -281,15 +272,20 @@ const Home = ({ navigation }) => {
                   latitudeDelta: 0.1,
                   longitudeDelta: 0.1,
                 }}
-                style={{ width: "100%", height: "100%", borderRadius: 10, backgroundColor:"white" }}
-              ></MapView>
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: 10,
+                  backgroundColor: "white",
+                }}
+              />
             </View>
             <View
               style={{
                 flex: 1,
                 width: "100%",
                 alignItems: "center",
-                backgroundColor:"white",
+                backgroundColor: "white",
               }}
             >
               <Button
@@ -319,75 +315,12 @@ const Home = ({ navigation }) => {
             </Text>
           </View>
           <Separator h={10} />
-          {/* card berita */}
           <FlatList
-            data={dataBerita}
-            renderItem={renderBerita}
-            keyExtractor={(item) => item.id}
-            // horizontal={true}
-            showsVerticalScrollIndicator={false}
+             data={dataBerita.posts} // Menggunakan data dari array "posts"
+             renderItem={renderBerita}
+             keyExtractor={(item, index) => item.link} // Menggunakan properti 'link' sebagai kunci unik
+             showsVerticalScrollIndicator={false}
           />
-          {/* card berita */}
-          {/* <View
-            style={{
-              width: "100%",
-              height: 80,
-              borderRadius: 10,
-              backgroundColor: "#DCCDE5",
-            }}
-          >
-            <View
-              style={{
-                flexDirection: "row",
-                height: "100%",
-                justifyContent: "center",
-              }}
-            >
-              <View
-                style={{
-                  flex: 3,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  paddingHorizontal: 10,
-                }}
-              >
-                <Image
-                  style={{ width: 50, height: 50 }}
-                  source={require("../assets/pp.png")}
-                ></Image>
-                <View style={{ paddingHorizontal: 10, maxWidth: "80%" }}>
-                  <Text style={{ fontFamily: "Inter_700Bold" }}>Ini judul</Text>
-                  <Text
-                    style={{ fontFamily: "Inter_400Regular", fontSize: 12 }}
-                  >
-                    Kabar hari ini mbah nafi tengah hamil tua
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  paddingHorizontal: 10,
-                  // backgroundColor: "blue",
-                }}
-              >
-                <View
-                  style={{
-                    backgroundColor: "#774494",
-                    width: "80%",
-                    height: "50%",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: 10,
-                  }}
-                >
-                  <Text style={{ color: "white" }}>lebih</Text>
-                </View>
-              </View>
-            </View>
-          </View> */}
         </View>
       </View>
     </View>

@@ -73,15 +73,6 @@ const TabList = () => {
           return (
             <>
               <MaterialCommunityIcons name={iconName} size={30} color={color} />
-              {/* {rn === "Home" && rn === "ProfileScreen" ? (
-                <MaterialCommunityIcons
-                  name={iconName}
-                  size={size}
-                  color={color}
-                />
-              ) : (
-                <MaterialIcons name={iconName} size={size} color={color} />
-              )} */}
             </>
           );
         },
@@ -159,11 +150,11 @@ export default function App() {
       >
         <Stack.Screen name={"Splash"} component={SplashScreen} />
         <Stack.Screen name={"Login"} component={Login} />
-        {/* <Stack.Screen name={"Home"} component={Home} /> */}
         <Stack.Screen name={"Register"} component={Register} />
-        {/* <Stack.Screen name={"Nerby"} component={Nerby} /> */}
         <Stack.Screen name={"HomeTab"} component={TabList} />
       </Stack.Navigator>
+      <FlashMessage position="top" />
+      <StatusBar style="auto" />
     </NavigationContainer>
   ) : (
     <AppLoading />

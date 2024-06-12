@@ -4,12 +4,14 @@ import "firebase/compat/firestore";
 import "firebase/compat/database";
 
 firebase.initializeApp({
-    apiKey: "AIzaSyCvriPv9gkYec9g3DvmxBqh-hHCJCTKhY8",
-    authDomain: "beyondnetris-2e288.firebaseapp.com",
-    projectId: "beyondnetris-2e288",
-    storageBucket: "beyondnetris-2e288.appspot.com",
-    messagingSenderId: "1051077403988",
-    appId: "1:1051077403988:web:dd0eba519639be6c7fd4c1"
+    apiKey: "AIzaSyDxUW3F6ltx6UmsrvLtQ9zpwlM0dpNM5iw",
+    authDomain: "beyondnetris-85cee.firebaseapp.com",
+    databaseURL: "https://beyondnetris-85cee-default-rtdb.firebaseio.com",
+    projectId: "beyondnetris-85cee",
+    storageBucket: "beyondnetris-85cee.appspot.com",
+    messagingSenderId: "41108014716",
+    appId: "1:41108014716:web:0785a5069ab9ad4c1a6bf9",
+    measurementId: "G-C6D2XGTCSZ"
 });
 
 const FIREBASE = firebase;
