@@ -51,7 +51,7 @@ const Button = (props) => {
             height: 50,
             justifyContent: "center",
             alignItems: "center",
-            borderRadius: 10,
+            borderRadius: 30,
             flexDirection: "row",
           }}
         >
