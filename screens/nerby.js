@@ -7,7 +7,8 @@ import {
   Dimensions,
   Image,
 } from "react-native";
-import React, { useState, useEffect, useRef } from "react";
+import { Separator } from "../components";
+import React, { useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 
@@ -40,6 +41,7 @@ const Nerby = ({ navigation }) => {
     };
     fetchCurrentLocation();
   }, []);
+  }, []);
 
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
@@ -61,38 +63,7 @@ const Nerby = ({ navigation }) => {
       coordinates: { latitude: -7.2666, longitude: 112.7453 },
       image: require("../assets/DUNLOP.jpg"),
     },
-    {
-      id: 2,
-      nama: "BRIDGESTONE",
-      tipe: "BRIDGESTONE AUTHORIZED DEALER",
-      alamat: "Jl. Basuki Rahmat No.16-18",
-      coordinates: { latitude: -7.2670, longitude: 112.7407 },
-      image: require("../assets/bridgestone.jpg"),
-    },
-    {
-      id: 3,
-      nama: "TOYOTA",
-      tipe: "TOYOTA DEALER",
-      alamat: "Jl. Ahmad Yani No. 256",
-      coordinates: { latitude: -7.3216, longitude: 112.7409 },
-      image: require("../assets/toyota.jpg"),
-    },
-    {
-      id: 4,
-      nama: "HONDA",
-      tipe: "HONDA DEALER",
-      alamat: "Jl. Mayjen HR. Muhammad No. 160",
-      coordinates: { latitude: -7.3028, longitude: 112.7179 },
-      image: require("../assets/honda.jpg"),
-    },
-    {
-      id: 5,
-      nama: "YAMAHA",
-      tipe: "YAMAHA DEALER",
-      alamat: "Jl. Basuki Rahmat No. 140",
-      coordinates: { latitude: -7.2875, longitude: 112.7426 },
-      image: require("../assets/planetban.jpg"),
-    },
+    // Add more items here
   ];
 
   const renderItem = ({ item, index }) => {
@@ -100,14 +71,7 @@ const Nerby = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => {
           setChooseItem(item.id);
-          mapRef.current.animateToRegion(
-            {
-              ...item.coordinates,
-              latitudeDelta: 0.005,
-              longitudeDelta: 0.005,
-            },
-            1000
-          );
+          navigation.navigate('ReviewScreen', { item });
         }}
         style={{
           height: windowHeight * 0.22,
@@ -145,7 +109,6 @@ const Nerby = ({ navigation }) => {
             style={{
               fontFamily: "Inter_400Regular",
               fontSize: 12,
-              // color: "#774494",
             }}
           >
             {item.tipe}
@@ -154,7 +117,6 @@ const Nerby = ({ navigation }) => {
             style={{
               fontFamily: "Inter_400Regular",
               fontSize: 12,
-              // color: "#774494",
             }}
           >
             {item.alamat}
@@ -194,6 +156,7 @@ const Nerby = ({ navigation }) => {
         <FlatList
           data={listTambalBan}
           renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
           keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}

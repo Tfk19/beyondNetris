@@ -4,6 +4,7 @@ import Register from "./register";
 import Nerby from "./nerby";
 import Home from "./home";
 import ProfileScreen from "./profileScreen";
-import beritadetail from "./beritadetail";
+import detail from "./detail";
+import ReviewScreen from "./ReviewScreen";
 
-export { SplashScreen, Login, Register, Nerby, Home, ProfileScreen, beritadetail };
+export { SplashScreen, Login, Register, Nerby, Home, ProfileScreen, detail, ReviewScreen };

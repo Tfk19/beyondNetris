@@ -12,6 +12,8 @@ import {
   Nerby,
   Home,
   ProfileScreen,
+  detail,
+  ReviewScreen,
 } from "./screens";
 import {
   Inter_400Regular,
@@ -108,6 +110,11 @@ const TabList = () => {
           tabBarShowLabel: false,
         }}
       />
+      {/* <Tab.Screen
+        name={"detail"}
+        component={detail}
+        options={{ tabBarShowLabel: false }}
+      /> */}
     </Tab.Navigator>
   );
 };
@@ -152,6 +159,8 @@ export default function App() {
         <Stack.Screen name={"Login"} component={Login} />
         <Stack.Screen name={"Register"} component={Register} />
         <Stack.Screen name={"HomeTab"} component={TabList} />
+        <Stack.Screen name="Detail" component={detail} />
+        <Stack.Screen name="ReviewScreen" component={ReviewScreen} />
       </Stack.Navigator>
       <FlashMessage position="top" />
       <StatusBar style="auto" />

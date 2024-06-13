@@ -160,7 +160,9 @@ const Home = ({ navigation }) => {
     });
     return unsubscribe;
   }, []);
-
+  const handleNavigateToDetail = (item) => {
+    navigation.navigate("Detail", { link: item.link });
+  };
   const renderItem = ({ item }, parallaxProps) => {
     return (
       <View style={styles.item}>
@@ -228,20 +230,12 @@ const Home = ({ navigation }) => {
                 paddingHorizontal: 10,
               }}
             >
-              <TouchableOpacity onPress={() => navigation.navigate("beritadetail", { newsItem })}>
-                <View
-                  style={{
-                    backgroundColor: "#F7B40B",
-                    width: "80%",
-                    height: "50%",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: 10,
-                  }}
-                >
-                  <Text style={{ color: "white" }}>Lebih</Text>
-                </View>
-              </TouchableOpacity>
+                <Button
+                left={false}
+                text={"Lebih"}
+                op={() => handleNavigateToDetail(item)}
+                full={true}
+              />
             </View>
           </View>
         </View>
@@ -304,11 +298,11 @@ const Home = ({ navigation }) => {
             }}
           >
             <Text style={{ fontFamily: "Inter_600SemiBold", fontSize: 16 }}>
-              Seputar tambal ban
+              Seputar Dunia Otomotif
             </Text>
-            <Text style={{ fontFamily: "Inter_400Regular", fontSize: 12 }}>
+            {/* <Text style={{ fontFamily: "Inter_400Regular", fontSize: 12 }}>
               Lihat semua
-            </Text>
+            </Text> */}
           </View>
           <Separator h={10} />
           <FlatList
