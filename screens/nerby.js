@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
 
 const Nerby = ({ navigation }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
-  const [chooseItem, setChooseItem] = useState(0);
+  const [chooseItem, setChooseItem] = useState(null);
+  const mapRef = useRef(null);
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -40,6 +41,7 @@ const Nerby = ({ navigation }) => {
     };
     fetchCurrentLocation();
   }, []);
+  }, []);
 
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
@@ -49,13 +51,17 @@ const Nerby = ({ navigation }) => {
       id: 0,
       nama: "MICHELIN",
       tipe: "MICHELIN AUTHORIZED DEALER",
-      alamat: "JL. Raya Gembrung No.20",
+      alamat: "Jl. Raya Gubeng No.20",
+      coordinates: { latitude: -7.2742, longitude: 112.7506 },
+      image: require("../assets/michelin.jpg"),
     },
     {
       id: 1,
-      nama: "Tambal ban jetis kulon",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
+      nama: "DUNLOP",
+      tipe: "DUNLOP AUTHORIZED DEALER",
+      alamat: "Jl. Panglima Sudirman No.60",
+      coordinates: { latitude: -7.2666, longitude: 112.7453 },
+      image: require("../assets/DUNLOP.jpg"),
     },
     // Add more items here
   ];
@@ -71,7 +77,7 @@ const Nerby = ({ navigation }) => {
           height: windowHeight * 0.22,
           width: windowWidth * 0.8,
           borderRadius: 10,
-          backgroundColor: index === chooseItem ? "#FFFAEC" : "#FFFFFF",
+          backgroundColor: item.id === chooseItem ? "#FFFAEC" : "#FFFFFF",
           borderWidth: 2,
           borderColor: "#A7A7A7",
           marginHorizontal: 15,
@@ -86,7 +92,7 @@ const Nerby = ({ navigation }) => {
               borderTopLeftRadius: 10,
               borderTopRightRadius: 10,
             }}
-            source={require("../assets/michelin.jpg")}
+            source={item.image}
           />
         </View>
         <View style={{ flex: 1.3, paddingLeft: 10, justifyContent: "center" }}>
@@ -99,7 +105,6 @@ const Nerby = ({ navigation }) => {
           >
             {item.nama}
           </Text>
-          <Separator h={3} />
           <Text
             style={{
               fontFamily: "Inter_400Regular",
@@ -108,7 +113,6 @@ const Nerby = ({ navigation }) => {
           >
             {item.tipe}
           </Text>
-          <Separator h={3} />
           <Text
             style={{
               fontFamily: "Inter_400Regular",
@@ -126,6 +130,7 @@ const Nerby = ({ navigation }) => {
     <View style={styles.container}>
       <View style={{ flex: 3 }}>
         <MapView
+          ref={mapRef}
           showsUserLocation={true}
           showsCompass={true}
           initialRegion={{
@@ -135,7 +140,15 @@ const Nerby = ({ navigation }) => {
             longitudeDelta: 0.1,
           }}
           style={{ width: "100%", height: "100%" }}
-        ></MapView>
+        >
+          {chooseItem !== null && (
+            <Marker
+              coordinate={listTambalBan[chooseItem].coordinates}
+              title={listTambalBan[chooseItem].nama}
+              description={listTambalBan[chooseItem].alamat}
+            />
+          )}
+        </MapView>
       </View>
       <View
         style={{ flex: 1.5, justifyContent: "center", alignItems: "center" }}
@@ -143,6 +156,7 @@ const Nerby = ({ navigation }) => {
         <FlatList
           data={listTambalBan}
           renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
           keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
