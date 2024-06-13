@@ -161,9 +161,10 @@ const Nerby = ({ navigation }) => {
           <TouchableOpacity
             style={{
               backgroundColor: "#000000",
-              padding: 10,
+              padding: 3,
               borderRadius: 5,
               marginTop: 10,
+              marginBottom:20,
               alignItems: "center",
             }}
             onPress={() => navigation.navigate('ReviewScreen', { item })}
