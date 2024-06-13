@@ -72,7 +72,7 @@ const Nerby = ({ navigation }) => {
     },
     {
       id: 3,
-      nama: "TOYOTA",
+      nama: "TOYOTAA",
       tipe: "TOYOTA DEALER",
       alamat: "Jl. Ahmad Yani No. 256",
       coordinates: { latitude: -7.3216, longitude: 112.7409 },
