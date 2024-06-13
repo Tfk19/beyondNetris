@@ -1,0 +1,61 @@
+{
+    "locations": {
+      "0": {
+        "id": 0,
+        "nama": "Auto 2000",
+        "tipe": "Authorized Dealer",
+        "alamat": "JL. Raya Gembrung No.20",
+        "latitude": -7.276527,
+        "longitude": 112.755317
+      },
+      "1": {
+        "id": 1,
+        "nama": "Auto 2000",
+        "tipe": "Authorized Dealer",
+        "alamat": "Jl. MH Thamrin No.8, Surabaya",
+        "latitude": -7.290531,
+        "longitude": 112.727133
+      },
+      "2": {
+        "id": 2,
+        "nama": "Auto 2000",
+        "tipe": "Authorized Dealer",
+        "alamat": "Jl. Basuki Rahmat No.71-73, Surabaya",
+        "latitude": -7.259982,
+        "longitude": 112.750251
+      },
+      "3": {
+        "id": 3,
+        "nama": "Auto 2000",
+        "tipe": "Authorized Dealer",
+        "alamat": "Jl. Ahmad Yani No.88, Surabaya",
+        "latitude": -7.335575,
+        "longitude": 112.739655
+      },
+      "4": {
+        "id": 4,
+        "nama": "Auto 2000",
+        "tipe": "Authorized Dealer",
+        "alamat": "Jl. Panglima Sudirman No.24, Surabaya",
+        "latitude": -7.268383,
+        "longitude": 112.739447
+      },
+      "5": {
+        "id": 5,
+        "nama": "Auto 2000",
+        "tipe": "Authorized Dealer",
+        "alamat": "Jl. Indrapura No.4, Surabaya",
+        "latitude": -7.240614,
+        "longitude": 112.740414
+      },
+      "6": {
+        "id": 6,
+        "nama": "Auto 2000",
+        "tipe": "Authorized Dealer",
+        "alamat": "Jl. HR. Muhammad No.63, Surabaya",
+        "latitude": -7.29644,
+        "longitude": 112.701105
+      }
+    }
+  }
+  

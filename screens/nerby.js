@@ -3,13 +3,11 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  ScrollView,
   FlatList,
   Dimensions,
   Image,
 } from "react-native";
-import { TextInput } from "react-native-paper";
-import { Separator, Button, AuthTextInput, PwdInput } from "../components";
+import { Separator } from "../components";
 import React, { useState, useEffect } from "react";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
@@ -41,7 +39,7 @@ const Nerby = ({ navigation }) => {
       }
     };
     fetchCurrentLocation();
-  });
+  }, []);
 
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
@@ -59,36 +57,7 @@ const Nerby = ({ navigation }) => {
       tipe: "Bengkel motor",
       alamat: "Jl bareng cuma temen",
     },
-    {
-      id: 2,
-      nama: "Tambal ban mas bro",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 3,
-      nama: "Tambal ban sis",
-      tipe: "Bengkel mobil",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 4,
-      nama: "Tambal ban pak dono",
-      tipe: "Bengkel mobil",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 5,
-      nama: "Tambal ban banjaya",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
-    },
-    {
-      id: 6,
-      nama: "Tambal ban barokah",
-      tipe: "Bengkel motor",
-      alamat: "Jl bareng cuma temen",
-    },
+    // Add more items here
   ];
 
   const renderItem = ({ item, index }) => {
@@ -96,6 +65,7 @@ const Nerby = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => {
           setChooseItem(item.id);
+          navigation.navigate('ReviewScreen', { item });
         }}
         style={{
           height: windowHeight * 0.22,
@@ -134,7 +104,6 @@ const Nerby = ({ navigation }) => {
             style={{
               fontFamily: "Inter_400Regular",
               fontSize: 12,
-              // color: "#774494",
             }}
           >
             {item.tipe}
@@ -144,7 +113,6 @@ const Nerby = ({ navigation }) => {
             style={{
               fontFamily: "Inter_400Regular",
               fontSize: 12,
-              // color: "#774494",
             }}
           >
             {item.alamat}
@@ -175,7 +143,7 @@ const Nerby = ({ navigation }) => {
         <FlatList
           data={listTambalBan}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item.id.toString()}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
         />
