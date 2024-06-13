@@ -47,6 +47,22 @@
         "alamat": "Jl. Basuki Rahmat No. 140",
         "coordinates": { "latitude": -7.2875, "longitude": 112.7426 },
         "image": "https://example.com/assets/planetban.jpg"
+      },
+      "6": {
+        "id": 6,
+        "nama": "PLANET BAN",
+        "tipe": "PLANET BAN",
+        "alamat": "Jl. Basuki Rahmat No. 140",
+        "coordinates": { "latitude": -7.2875, "longitude": 112.7426 },
+        "image": "https://example.com/assets/planetban.jpg"
+      },
+      "7": {
+        "id": 7,
+        "nama": "PLANET BAN",
+        "tipe": "PLANET BAN",
+        "alamat": "Jl. Basuki Rahmat No. 140",
+        "coordinates": { "latitude": -7.2875, "longitude": 112.7426 },
+        "image": "https://example.com/assets/planetban.jpg"
       }
     }
   }

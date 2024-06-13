@@ -5,7 +5,6 @@ import {
   StyleSheet,
   FlatList,
   TextInput,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import firebase from "../config/FIREBASE/index"; // Ensure this path is correct
@@ -59,7 +58,9 @@ const ReviewScreen = ({ route, navigation }) => {
         value={newReview}
         onChangeText={setNewReview}
       />
-      <Button title="Submit" onPress={handleAddReview} />
+      <TouchableOpacity style={styles.submitButton} onPress={handleAddReview}>
+        <Text style={styles.submitButtonText}>Submit</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => navigation.goBack()}
@@ -91,11 +92,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
+    marginHorizontal:20,
+  },
+  submitButton: {
+    backgroundColor: '#F7B40B', 
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginHorizontal:20,
+  },
+  submitButtonText: {
+    color: '#fff',
+    fontSize: 16,
   },
   backButton: {
     marginTop: 20,
+    marginBottom:20,
+    marginHorizontal:20,
     padding: 10,
-    backgroundColor: '#F7B40B',
+    backgroundColor: '#000000',
     borderRadius: 5,
   },
   backButtonText: {

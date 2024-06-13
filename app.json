@@ -31,10 +31,16 @@
         "googleMaps": {
           "apiKey": "AIzaSyA47i_0RjaPDgL631WIAGA9QcRzWMQfhCo"
         }
-      }
+      },
+      "package": "com.tfk19.BeyondNetris"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aa0ceca4-6ecb-4cdb-8b39-2f80ea58c886"
+      }
     }
   }
 }
