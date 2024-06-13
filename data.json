@@ -1,0 +1,53 @@
+{
+    "tambalBan": {
+      "0": {
+        "id": 0,
+        "nama": "MICHELIN",
+        "tipe": "MICHELIN AUTHORIZED DEALER",
+        "alamat": "Jl. Raya Gubeng No.20",
+        "coordinates": { "latitude": -7.2742, "longitude": 112.7506 },
+        "image": "https://example.com/assets/michelin.jpg"
+      },
+      "1": {
+        "id": 1,
+        "nama": "DUNLOP",
+        "tipe": "DUNLOP AUTHORIZED DEALER",
+        "alamat": "Jl. Panglima Sudirman No.60",
+        "coordinates": { "latitude": -7.2666, "longitude": 112.7453 },
+        "image": "https://example.com/assets/DUNLOP.jpg"
+      },
+      "2": {
+        "id": 2,
+        "nama": "BRIDGESTONE",
+        "tipe": "BRIDGESTONE AUTHORIZED DEALER",
+        "alamat": "Jl. Basuki Rahmat No.16-18",
+        "coordinates": { "latitude": -7.2670, "longitude": 112.7407 },
+        "image": "https://example.com/assets/bridgestone.jpg"
+      },
+      "3": {
+        "id": 3,
+        "nama": "TOYOTA",
+        "tipe": "TOYOTA DEALER",
+        "alamat": "Jl. Ahmad Yani No. 256",
+        "coordinates": { "latitude": -7.3216, "longitude": 112.7409 },
+        "image": "https://example.com/assets/toyota.jpg"
+      },
+      "4": {
+        "id": 4,
+        "nama": "HONDA",
+        "tipe": "HONDA DEALER",
+        "alamat": "Jl. Mayjen HR. Muhammad No. 160",
+        "coordinates": { "latitude": -7.3028, "longitude": 112.7179 },
+        "image": "https://example.com/assets/honda.jpg"
+      },
+      "5": {
+        "id": 5,
+        "nama": "PLANET BAN",
+        "tipe": "PLANET BAN",
+        "alamat": "Jl. Basuki Rahmat No. 140",
+        "coordinates": { "latitude": -7.2875, "longitude": 112.7426 },
+        "image": "https://example.com/assets/planetban.jpg"
+      }
+    }
+  }
+  

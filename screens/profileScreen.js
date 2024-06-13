@@ -4,7 +4,7 @@ import { Profile, Button, Separator } from "../components";
 
 const ProfileScreen = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, paddingVertical: 50, paddingHorizontal: 20, backgroundColor:"#ededed" }}>
+    <View style={{ flex: 1, paddingVertical: 50, paddingHorizontal: 20, backgroundColor:"#FFFFFF" }}>
       <View style={{ flexDirection: "row" }}>
         <Profile name={"Taufik"} />
       </View>
