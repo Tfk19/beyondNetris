@@ -35,7 +35,7 @@ const Profile = (props) => {
             fontSize: 13,
           }}
         >
-          Hati hati dijalan :)
+          stay safe :)
         </Text>
       </View>
     </>
