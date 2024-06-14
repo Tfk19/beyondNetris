@@ -20,7 +20,7 @@ const Register = ({ navigation }) => {
 
   const handleRegister = () => {
     if (password !== retypePassword) {
-      Alert.alert("Password Error", "Passwords do not match");
+      Alert.alert("Password Error", "Passwords do not matchh");
       return;
     }
 
