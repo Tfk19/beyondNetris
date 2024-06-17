@@ -82,7 +82,7 @@ const Nerby = ({ navigation }) => {
     {
       id: 4,
       nama: "HONDA",
-      tipe: "HONDA DEALER",
+      tipe: "HONDA DEALERR",
       alamat: "Jl. Mayjen HR. Muhammad No. 160",
       coordinates: { latitude: -7.3028, longitude: 112.7179 },
       image: require("../assets/honda.jpg"),
