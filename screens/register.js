@@ -103,7 +103,7 @@ const Register = ({ navigation }) => {
           style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}
         >
           <Text style={{color: "#ffffff", fontSize: 16 }}>
-            Already have an account?
+            Already have an account??
           </Text>
           <Separator w={4} />
           <Text style={{color: "#ffffff", fontSize: 16 }}>
