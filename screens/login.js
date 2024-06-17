@@ -47,7 +47,7 @@ const Login = ({ navigation }) => {
             fontSize: 15,
           }}
         >
-          Enter your account to continue
+          Maukkan Akun Anda
         </Text>
       </View>
       <View
