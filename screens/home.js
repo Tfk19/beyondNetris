@@ -278,7 +278,7 @@ const Home = ({ navigation }) => {
             }}
           >
             <Text style={{  fontSize: 16 }}>
-              Seputar Dunia Otomotif
+              Berita Otomotif Terkini 
             </Text>
           </View>
           <Separator h={10} />
