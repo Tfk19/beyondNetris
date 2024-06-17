@@ -49,7 +49,7 @@ const Nerby = ({ navigation }) => {
   const listTambalBan = [
     {
       id: 0,
-      nama: "MICHELIN",
+      nama: "MICHELIN DEALER",
       tipe: "MICHELIN AUTHORIZED DEALER",
       alamat: "Jl. Raya Gubeng No.20",
       coordinates: { latitude: -7.2742, longitude: 112.7506 },
@@ -57,7 +57,7 @@ const Nerby = ({ navigation }) => {
     },
     {
       id: 1,
-      nama: "DUNLOP",
+      nama: "DUNLOP DEALER",
       tipe: "DUNLOP AUTHORIZED DEALER",
       alamat: "Jl. Panglima Sudirman No.60",
       coordinates: { latitude: -7.2666, longitude: 112.7453 },
@@ -65,7 +65,7 @@ const Nerby = ({ navigation }) => {
     },
     {
       id: 2,
-      nama: "BRIDGESTONE",
+      nama: "BRIDGESTONE DEALER",
       tipe: "BRIDGESTONE AUTHORIZED DEALER",
       alamat: "Jl. Basuki Rahmat No.16-18",
       coordinates: { latitude: -7.2670, longitude: 112.7407 },
@@ -73,7 +73,7 @@ const Nerby = ({ navigation }) => {
     },
     {
       id: 3,
-      nama: "TOYOTAA",
+      nama: "TOYOTA DEALER",
       tipe: "TOYOTA DEALER",
       alamat: "Jl. Ahmad Yani No. 256",
       coordinates: { latitude: -7.3216, longitude: 112.7409 },
@@ -89,8 +89,8 @@ const Nerby = ({ navigation }) => {
     },
     {
       id: 5,
-      nama: "YAMAHA",
-      tipe: "YAMAHA DEALER",
+      nama: "SUZUKI DEALER",
+      tipe: "SUZUKI DEALER",
       alamat: "Jl. Basuki Rahmat No. 140",
       coordinates: { latitude: -7.2875, longitude: 112.7426 },
       image: require("../assets/planetban.jpg"),
