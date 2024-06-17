@@ -99,7 +99,7 @@ const SplashScreen = ({ navigation }) => {
                 fontSize: 18,
               }}
             >
-              Easy to use
+              Easy to use !
             </Text>
             <Separator h={10} />
             <View style={{ width: "75%" }}>
