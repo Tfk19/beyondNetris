@@ -3,6 +3,7 @@ import React from "react";
 import Swiper from "react-native-swiper";
 import Svg, { G, Path } from "react-native-svg";
 import { NetrisLogo, Separator } from "../components";
+import ViewPropTypes from "deprecated-react-native-prop-types";
 
 const styles = StyleSheet.create({
   container: {
@@ -94,7 +95,7 @@ const SplashScreen = ({ navigation }) => {
             <Text
               style={{
                 color: "#ffffff",
-                fontFamily: "Inter_700Bold",
+                // fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
             >
@@ -107,7 +108,7 @@ const SplashScreen = ({ navigation }) => {
                   color: "#ffffff",
                   fontSize: 14,
                   textAlign: "center",
-                  fontFamily: "Inter_400Regular",
+                  // fontFamily: "Inter_400Regular",
                 }}
               >
                 if a tire problem occurs, open your smartphone and find the
@@ -125,7 +126,7 @@ const SplashScreen = ({ navigation }) => {
             <Text
               style={{
                 color: "#ffffff",
-                fontFamily: "Inter_700Bold",
+                // fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
             >
@@ -138,7 +139,7 @@ const SplashScreen = ({ navigation }) => {
                   color: "#ffffff",
                   fontSize: 14,
                   textAlign: "center",
-                  fontFamily: "Inter_400Regular",
+                  // fontFamily: "Inter_400Regular",
                 }}
               >
                 if a tire problem occurs, open your smartphone and find the
@@ -156,7 +157,7 @@ const SplashScreen = ({ navigation }) => {
             <Text
               style={{
                 color: "#ffffff",
-                fontFamily: "Inter_700Bold",
+                // fontFamily: "Inter_700Bold",
                 fontSize: 18,
               }}
             >
@@ -169,7 +170,7 @@ const SplashScreen = ({ navigation }) => {
                   color: "#ffffff",
                   fontSize: 14,
                   textAlign: "center",
-                  fontFamily: "Inter_400Regular",
+                  // fontFamily: "Inter_400Regular",
                 }}
               >
                 if a tire problem occurs, open your smartphone and find the
@@ -202,7 +203,7 @@ const SplashScreen = ({ navigation }) => {
               borderRadius: 30,
             }}
           >
-            <Text style={{ color: "white", fontFamily: "Inter_400Regular" }}>
+            <Text style={{ color: "white", }}>
               get started
             </Text>
           </View>

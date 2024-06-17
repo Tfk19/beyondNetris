@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { AuthTextInput, PwdInput, Separator, Button } from "../components";
 import firebase from "../config/FIREBASE/index";
+import ViewPropTypes from "deprecated-react-native-prop-types";
 
 const styles = StyleSheet.create({
   container: {
@@ -58,10 +59,10 @@ const Register = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={{ flex: 1.5, justifyContent: "center", alignItems: "center" }}>
-        <Text style={{ fontFamily: "Inter_600SemiBold", color: "#ffffff", fontSize: 35 }}>
+        <Text style={{color: "#ffffff", fontSize: 35 }}>
           Sign Up
         </Text>
-        <Text style={{ fontFamily: "Inter_400Regular", color: "#ffffff", fontSize: 15 }}>
+        <Text style={{color: "#ffffff", fontSize: 15 }}>
           Create account here
         </Text>
       </View>
@@ -101,11 +102,11 @@ const Register = ({ navigation }) => {
           }}
           style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}
         >
-          <Text style={{ fontFamily: "Inter_400Regular", color: "#ffffff", fontSize: 16 }}>
+          <Text style={{color: "#ffffff", fontSize: 16 }}>
             Already have an account?
           </Text>
           <Separator w={4} />
-          <Text style={{ fontFamily: "Inter_600SemiBold", color: "#ffffff", fontSize: 16 }}>
+          <Text style={{color: "#ffffff", fontSize: 16 }}>
             Sign in
           </Text>
         </TouchableOpacity>

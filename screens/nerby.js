@@ -11,6 +11,7 @@ import {
 import React, { useState, useEffect, useRef } from "react";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
+import ViewPropTypes from "deprecated-react-native-prop-types";
 
 const styles = StyleSheet.create({
   container: {
@@ -135,7 +136,7 @@ const Nerby = ({ navigation }) => {
         <View style={{ flex: 1.3, paddingLeft: 10, paddingTop:10 , paddingRight: 10,justifyContent: "center" }}>
           <Text
             style={{
-              fontFamily: "Inter_700Bold",
+              // fontFamily: "Inter_700Bold",
               fontSize: 16,
               color: "#F7B40B",
             }}
@@ -144,7 +145,7 @@ const Nerby = ({ navigation }) => {
           </Text>
           <Text
             style={{
-              fontFamily: "Inter_400Regular",
+              // fontFamily: "Inter_400Regular",
               fontSize: 12,
             }}
           >
@@ -152,7 +153,7 @@ const Nerby = ({ navigation }) => {
           </Text>
           <Text
             style={{
-              fontFamily: "Inter_400Regular",
+              // fontFamily: "Inter_400Regular",
               fontSize: 12,
             }}
           >
