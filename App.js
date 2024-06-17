@@ -12,17 +12,18 @@ import {
   Nerby,
   Home,
   ProfileScreen,
-  detail,
+  Detail,
   ReviewScreen,
 } from "./screens";
-import {
-  Inter_400Regular,
-  Inter_600SemiBold,
-  Inter_700Bold,
-  useFonts,
-} from "@expo-google-fonts/inter";
+// import {
+//   Inter_400Regular,
+//   Inter_600SemiBold,
+//   Inter_700Bold,
+//   useFonts,
+// } from "@expo-google-fonts/inter";
+import ViewPropTypes from "deprecated-react-native-prop-types";
 import FlashMessage from "react-native-flash-message";
-import AppLoading from "expo-app-loading";
+// import AppLoading from "expo-app-loading";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
@@ -144,29 +145,25 @@ const CustomTabIcon = ({ name, focused, size, color }) => {
 };
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    Inter_400Regular,
-    Inter_600SemiBold,
-    Inter_700Bold,
-  });
-  return fontsLoaded ? (
+  // const [fontsLoaded] = useFonts({
+  //   Inter_400Regular,
+  //   Inter_600SemiBold,
+  //   Inter_700Bold,
+  // });
+
+  return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Splash"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name={"Splash"} component={SplashScreen} />
-        <Stack.Screen name={"Login"} component={Login} />
-        <Stack.Screen name={"Register"} component={Register} />
-        <Stack.Screen name={"HomeTab"} component={TabList} />
-        <Stack.Screen name="Detail" component={detail} />
+      <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="HomeTab" component={TabList} />
+        <Stack.Screen name="Detail" component={Detail} />
         <Stack.Screen name="ReviewScreen" component={ReviewScreen} />
       </Stack.Navigator>
       <FlashMessage position="top" />
       <StatusBar style="auto" />
     </NavigationContainer>
-  ) : (
-    <AppLoading />
   );
 }
 

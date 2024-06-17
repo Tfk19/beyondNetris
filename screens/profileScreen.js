@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { Profile, Button, Separator } from "../components";
+import ViewPropTypes from "deprecated-react-native-prop-types";
 
 const ProfileScreen = ({ navigation }) => {
   return (

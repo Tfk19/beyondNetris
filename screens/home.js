@@ -13,35 +13,11 @@ import { Button, Separator, Profile } from "../components";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
-import firebase from "../config/FIREBASE/index"
-
+import firebase from "../config/FIREBASE/index";
+import ViewPropTypes from "deprecated-react-native-prop-types";
 
 const ENTRIES1 = [
-  {
-    title: "Beautiful and dramatic Antelope Canyon",
-    subtitle: "Lorem ipsum dolor sit amet et nuncat mergitur",
-    illustration: "https://i.imgur.com/UYiroysl.jpg",
-  },
-  {
-    title: "Earlier this morning, NYC",
-    subtitle: "Lorem ipsum dolor sit amet",
-    illustration: "https://i.imgur.com/UPrs1EWl.jpg",
-  },
-  {
-    title: "White Pocket Sunset",
-    subtitle: "Lorem ipsum dolor sit amet et nuncat ",
-    illustration: "https://i.imgur.com/MABUbpDl.jpg",
-  },
-  {
-    title: "Acrocorinth, Greece",
-    subtitle: "Lorem ipsum dolor sit amet et nuncat mergitur",
-    illustration: "https://i.imgur.com/KZsmUi2l.jpg",
-  },
-  {
-    title: "The lone tree, majestic landscape of New Zealand",
-    subtitle: "Lorem ipsum dolor sit amet",
-    illustration: "https://i.imgur.com/2nCt3Sbl.jpg",
-  },
+  // ...your entries
 ];
 
 const { width: screenWidth } = Dimensions.get("window");
@@ -71,7 +47,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     alignItems: "center",
-
   },
   containerMapView: {
     flex: 4,
@@ -100,6 +75,9 @@ const Home = ({ navigation }) => {
   const carouselRef = useRef(null);
   const [userName, setUserName] = useState("");
   const [dataBerita, setDataBerita] = useState([]);
+  const handleNavigateToNearby = () => {
+    navigation.navigate("Nearby");
+  };
 
   const goForward = () => {
     carouselRef.current.snapToNext();
@@ -108,7 +86,9 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://api-berita-indonesia.vercel.app/antara/otomotif/');
+        const response = await fetch(
+          "https://api-berita-indonesia.vercel.app/antara/otomotif/"
+        );
         const data = await response.json();
         setDataBerita(data.data.posts);
       } catch (error) {
@@ -123,7 +103,7 @@ const Home = ({ navigation }) => {
       try {
         const { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== "granted") {
-          setError("Permission to access location was denied");
+          console.error("Permission to access location was denied");
           return;
         }
         const location = await Location.getCurrentPositionAsync({});
@@ -142,13 +122,14 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        firebase.database()
+        firebase
+          .database()
           .ref("users/" + user.uid)
           .once("value")
           .then((snapshot) => {
             const userData = snapshot.val();
             if (userData) {
-              setUserName(userData.fullName); // Assuming the name field is fullName, adjust accordingly
+              setUserName(userData.fullName);
             }
           })
           .catch((error) => {
@@ -160,9 +141,11 @@ const Home = ({ navigation }) => {
     });
     return unsubscribe;
   }, []);
+
   const handleNavigateToDetail = (item) => {
-    navigation.navigate("Detail", { link: item.link });
+    navigation.navigate("Detail", { websiteUrl: item.link }); // Passing the website URL
   };
+
   const renderItem = ({ item }, parallaxProps) => {
     return (
       <View style={styles.item}>
@@ -178,9 +161,6 @@ const Home = ({ navigation }) => {
   };
 
   const renderBerita = ({ item }) => {
-    const newsItem = {
-      id: item.id,
-    };
     return (
       <>
         <View
@@ -213,7 +193,7 @@ const Home = ({ navigation }) => {
               <View style={{ paddingHorizontal: 10, maxWidth: "80%" }}>
                 <Text
                   style={{
-                    fontFamily: "Inter_700Bold",
+                    // fontFamily: "Inter_700Bold",
                     color: "#F7B40B",
                     fontSize: 13,
                   }}
@@ -230,7 +210,7 @@ const Home = ({ navigation }) => {
                 paddingHorizontal: 10,
               }}
             >
-                <Button
+              <Button
                 left={false}
                 text={"Lebih"}
                 op={() => handleNavigateToDetail(item)}
@@ -278,10 +258,10 @@ const Home = ({ navigation }) => {
                 width: "100%",
               }}
             >
-              <Button
+               <Button
                 left={false}
                 text={"Cari tambal ban"}
-                op={() => navigation.navigate("Nerby")}
+                op={handleNavigateToNearby} // Panggil fungsi handleNavigateToNearby
                 full={true}
               />
             </View>
@@ -297,18 +277,15 @@ const Home = ({ navigation }) => {
               marginBottom: 10,
             }}
           >
-            <Text style={{ fontFamily: "Inter_600SemiBold", fontSize: 16 }}>
+            <Text style={{  fontSize: 16 }}>
               Seputar Dunia Otomotif
             </Text>
-            {/* <Text style={{ fontFamily: "Inter_400Regular", fontSize: 12 }}>
-              Lihat semua
-            </Text> */}
           </View>
           <Separator h={10} />
           <FlatList
-            data={dataBerita} // Menggunakan data dari state dataBerita
+            data={dataBerita}
             renderItem={renderBerita}
-            keyExtractor={(item, index) => item.link} // Menggunakan properti 'link' sebagai kunci unik
+            keyExtractor={(item, index) => item.link}
             showsVerticalScrollIndicator={false}
           />
         </View>

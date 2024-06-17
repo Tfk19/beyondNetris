@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { AuthTextInput, PwdInput, Separator, Button } from "../components";
 import { loginUser } from "../Action/AuthAction";
+import ViewPropTypes from "deprecated-react-native-prop-types";
 
 const styles = StyleSheet.create({
   container: {
@@ -32,7 +33,7 @@ const Login = ({ navigation }) => {
       >
         <Text
           style={{
-            fontFamily: "Inter_600SemiBold",
+            // fontFamily: "Inter_600SemiBold",
             color: "#ffffff",
             fontSize: 35,
           }}
@@ -41,7 +42,7 @@ const Login = ({ navigation }) => {
         </Text>
         <Text
           style={{
-            fontFamily: "Inter_400Regular",
+            // fontFamily: "Inter_400Regular",
             color: "#000000",
             fontSize: 15,
           }}
@@ -75,7 +76,7 @@ const Login = ({ navigation }) => {
         <Separator h={15} />
         <Text
           style={{
-            fontFamily: "Inter_400Regular",
+            // fontFamily: "Inter_400Regular",
             fontSize: 14,
             color: "#000000",
           }}
@@ -102,7 +103,7 @@ const Login = ({ navigation }) => {
         >
           <Text
             style={{
-              fontFamily: "Inter_400Regular",
+              // fontFamily: "Inter_400Regular",
               color: "#ffffff",
               fontSize: 16,
             }}
@@ -112,7 +113,7 @@ const Login = ({ navigation }) => {
           <Separator w={4} />
           <Text
             style={{
-              fontFamily: "Inter_600SemiBold",
+              // fontFamily: "Inter_600SemiBold",
               color: "#ffffff",
               fontSize: 16,
             }}

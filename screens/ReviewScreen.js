@@ -7,7 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import firebase from "../config/FIREBASE/index"; // Ensure this path is correct
+import firebase from "../config/FIREBASE/index";
+import ViewPropTypes from "deprecated-react-native-prop-types";
 
 const ReviewScreen = ({ route, navigation }) => {
   const { item } = route.params;
