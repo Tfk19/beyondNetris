@@ -6,7 +6,7 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, paddingVertical: 50, paddingHorizontal: 20, backgroundColor:"#FFFFFF" }}>
       <View style={{ flexDirection: "row" }}>
-        <Profile name={"hanif"} />
+        <Profile name={"bahy"} />
       </View>
       <Separator h={50} />
       <Button
